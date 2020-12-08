@@ -1,11 +1,32 @@
 # kubectl-prune
 
+## Install
+
+```shell
+VERSION=0.0.1
+curl -o kubectl-prune.tar.gz -Lf https://github.com/zxh326/kubectl-prune/releases/download/v${VERSION}/kubectl-prune-v${VERSION}-$(go env GOOS)-amd64.tar.gz
+tar xf kubectl-prune.tar.gz
+cp kubectl-prune-v${VERSION}-$(go env GOOS)-amd64/kubectl-prune $GOPATH/bin/
+```
+
 ## feature
 
-skip default sa
-skip docker pull secrets
+prune unused k8s resources
+
+support
+
+- [x] configmap
+- [x] secrets
+- [x] serviceAccount
+- [ ] death pods
+- [ ] 0 replicas deployment
+- [ ] replicaset
+- [ ] service
+- [ ] custom crds
 
 ## usage
+
+(can use --dry-run flag to test before delete)
 
 - ### delete one kind with confirm
 
@@ -45,5 +66,3 @@ delete cm/test
 ```bash
 $ k prune —-all-namespaces
 ```
-
-need dry-run ?
